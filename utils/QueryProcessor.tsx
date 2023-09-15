@@ -7,5 +7,11 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes("nmostafa")) {
+    return (
+      "Your AndrewID."
+    );
+  }
+
   return "";
 }
