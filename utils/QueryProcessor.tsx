@@ -19,5 +19,30 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  const queryRegex = /Which of the following numbers is the largest:\s*((\d+\s*,\s*)+\d+)\s*\?/i;
+
+  if (queryRegex.test(query)) {
+    const match = query.match(queryRegex);
+    if (match != null){
+      const numbersString = match[1]; // Extract the matched numbers string
+      const numbers = numbersString.match(/\d+/g);
+      if (numbers) {
+        // Convert the matched numbers from strings to integers
+        const numbersArray = numbers.map(Number);
+  
+        // Find the largest number in the array
+        const largestNumber = Math.max(...numbersArray);
+  
+        return `${largestNumber}`;
+      } 
+    }
+    
+
+
+    return (
+      ""
+    );
+  }
+
   return "";
 }
